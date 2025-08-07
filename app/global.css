@@ -1,3 +1,16 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bold {
+  @apply text-lg color-black-100;
+}
+/* .medium {
+  @apply   color-black-100;
+} */
+
+.my-custom-class {
+  color: red;
+  font-size: s(18);
+}
