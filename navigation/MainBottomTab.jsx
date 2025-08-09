@@ -11,7 +11,7 @@ import { Icon } from "react-native-paper";
 const MainBottomTab = () => {
   const Tab = createBottomTabNavigator();
   return (
-    <Tab.Navigator screenOptions={{headerShown : false}}>
+    <Tab.Navigator screenOptions={{headerShown : false , tabBarStyle : {height :70} }}>
         <Tab.Screen name="HomeScreen" component={HomeScreen} 
         options={{
              tabBarIcon : ({color})=><FontAwesome name="home" size={24} color={color} />
