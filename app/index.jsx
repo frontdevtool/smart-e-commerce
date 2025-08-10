@@ -8,6 +8,7 @@ import MainStack from "@/navigation/MainStack";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useFonts } from 'expo-font';
 import { ActivityIndicator } from "react-native-paper";
+import CartItem from "@/components/custom/CartItem";
 
 const index = () => {
     const [fontsLoaded, error] = useFonts({
@@ -36,6 +37,7 @@ const index = () => {
       
       {/* <AuthStack/> */}
       <MainStack/>
+      {/* <CartItem/> */}
     </>
   );
 };

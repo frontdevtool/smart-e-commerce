@@ -16,12 +16,12 @@ const MainBottomTab = () => {
         options={{
              tabBarIcon : ({color})=><FontAwesome name="home" size={24} color={color} />
         }}/>
+      <Tab.Screen name="CartScreen" component={CartScreen} options={{
+        tabBarIcon : ({color})=><FontAwesome name="id-card" size={24} color={color} />
+      }}/>
       <Tab.Screen name="ProfileScreen" component={ProfileScreen} options={{
         // headerRight :()=><Pressable onPress={()=>alert('hi kazem')}>send</Pressable>
          tabBarIcon : ({color})=><FontAwesome name="pencil-square-o" size={24} color={color} />
-      }}/>
-      <Tab.Screen name="CartScreen" component={CartScreen} options={{
-        tabBarIcon : ({color})=><FontAwesome name="id-card" size={24} color={color} />
       }}/>
     </Tab.Navigator>
   );
