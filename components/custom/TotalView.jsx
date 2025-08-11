@@ -3,17 +3,17 @@ import React from "react";
 import { Button, Divider } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 
-export default function TotalView() {
+export default function TotalView({itemPrice ,orderTotal}) {
     const navigation = useNavigation()
   return (
     <View>
       <View className="flex-row justify-between p-2 ">
-        <Text>Order totale</Text>
-        <Text>10$</Text>
+        <Text>item price :  </Text>
+        <Text>{itemPrice} $</Text>
       </View>
       <View className="flex-row justify-between p-2 ">
         <Text>Taxes fees</Text>
-        <Text>10$</Text>
+        <Text>5$</Text>
       </View>
       <View className="flex-row justify-between p-2 ">
         <Text>Shipping fees</Text>
@@ -22,9 +22,9 @@ export default function TotalView() {
       <Divider/>
       <View className="flex-row justify-between p-2 ">
         <Text>Order totale</Text>
-        <Text>10$</Text>
+        <Text> {orderTotal} $</Text>
       </View>
-      <Button mode="contained" onPress={()=>navigation.navigate('')}>countinu</Button>
+      <Button mode="contained" onPress={()=>navigation.navigate('CheckoutScreen')}>countinu</Button>
     </View>
   );
 }

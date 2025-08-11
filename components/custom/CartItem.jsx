@@ -2,9 +2,10 @@ import { View, Text, Image, Pressable, TouchableOpacity } from "react-native";
 import React from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 
-export default function CartItem() {
+export default function CartItem({item}) {
+  console.log('item: ', item);
   return (
-    <View className="bg-slate-100 flex-row w-full p-1 flex-[0.25] border">
+    <View className="bg-slate-100 flex-row w-full p-1 h-28 border my-1">
       {/* image box */}
       <View className="flex-[2] h-full justify-start items-center bg-green-400">
         <Image
