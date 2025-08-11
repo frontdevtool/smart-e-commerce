@@ -2,11 +2,12 @@ import { View, Text } from "react-native";
 import React from "react";
 import { Button, Divider } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function TotalView({itemPrice ,orderTotal}) {
     const navigation = useNavigation()
   return (
-    <View>
+    <View className="mb-6">
       <View className="flex-row justify-between p-2 ">
         <Text>item price :  </Text>
         <Text>{itemPrice} $</Text>

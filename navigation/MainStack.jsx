@@ -6,6 +6,7 @@ import { Pressable } from "react-native";
 import AuthStack from "./AuthStack";
 import MainBottomTab from "./MainBottomTab";
 import CheckoutScreen from "@/screens/cart/CheckoutScreen";
+import OrdersScreen from "@/screens/order/OrdersScreen";
 
 const MainStack = () => {
   const Stack = createStackNavigator();
@@ -20,6 +21,12 @@ const MainStack = () => {
       options={{
         headerStyle : {height : 50 },
         title :'checkout'
+      }}
+/>
+      <Stack.Screen name="OrdersScreen" component={OrdersScreen} 
+      options={{
+        headerStyle : {height : 50 },
+        title :'Orders Screen'
       }}
 />
     </Stack.Navigator>

@@ -2,7 +2,7 @@ import SignInScreen from "@/screens/auth/SignInScreen";
 import SignUpScreen from "@/screens/auth/SignUpScreen";
 import CartScreen from "@/screens/cart/CartScreen";
 import HomeScreen from "@/screens/home/HomeScreen";
-import ProfileScreen from "@/screens/prefile/ProfileScreen";
+import ProfileScreen from "@/screens/profile/ProfileScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Pressable } from "react-native";
