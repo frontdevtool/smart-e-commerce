@@ -10,7 +10,7 @@ export default function ProductCart({onPress , imageUrl , title , price}) {
       className="w-40 h-602  p-2 border
 "
     >
-      <TouchableOpacity className="z-10 absolute left-2 top-2 ">
+      <TouchableOpacity className="z-10 absolute left-2 top-2 " onPress={onPress}>
         <FontAwesome name="shopping-cart" size={24} className=" " />
       </TouchableOpacity>
       <View className="p-2">

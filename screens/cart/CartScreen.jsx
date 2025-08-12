@@ -6,8 +6,11 @@ import EmptyCart from "./EmptyCart";
 import CartItem from "@/components/custom/CartItem";
 import TotalView from "@/components/custom/TotalView";
 import { products } from "@/data/products";
+import store from "@/store/store";
 
 export default function CartScreen() {
+    const items = store((state) => state.items)
+
   return (
     <SafeAreaView className="flex-1 ">
       <View>
@@ -20,11 +23,11 @@ export default function CartScreen() {
 
           <FlatList
           
-          data={products}
+          data={items}
           keyExtractor={(item)=>item.id}
           renderItem={({item})=>(
             // <View className="bg-slate-100 flex-row w-full p-1 h-28 border my-1">
-              <CartItem {...item} /> 
+              <CartItem item = {item} /> 
          
             // </View>
           )}

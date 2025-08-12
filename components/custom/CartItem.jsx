@@ -2,7 +2,13 @@ import { View, Text, Image, Pressable, TouchableOpacity } from "react-native";
 import React from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 
-export default function CartItem({item}) {
+export default function CartItem({  title,
+  price,
+  imageURL,
+  qty,
+  onDeletePress,
+  onIncreasePress,
+  onReducePress}) {
   console.log('item: ', item);
   return (
     <View className="bg-slate-100 flex-row w-full p-1 h-28 border my-1">
@@ -11,15 +17,15 @@ export default function CartItem({item}) {
         <Image
           className="w-[100%] h-full "
           source={{
-            uri: "https://2b.com.eg/media/catalog/product/cache/661473ab953cdcdf4c3b607144109b90/m/a/ma658.jpg",
+            uri:item.imageURL,
           }}
         />
         {/* <Text>111</Text> */}
       </View>
       {/* details box */}
       <View className="flex-[3.5] justify-around items-start">
-        <Text>222</Text>
-        <Text>222</Text>
+        <Text>{item.title}</Text>
+        <Text> {item.price} </Text>
         <View className="flex-row w-[70%] h-18 justify-around p-2 items-center bg-slate-200 border rounded-3xl ">
           <TouchableOpacity>
             <FontAwesome
