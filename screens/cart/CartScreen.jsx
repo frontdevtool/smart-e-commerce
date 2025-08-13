@@ -6,10 +6,13 @@ import EmptyCart from "./EmptyCart";
 import CartItem from "@/components/custom/CartItem";
 import TotalView from "@/components/custom/TotalView";
 import { products } from "@/data/products";
-import store from "@/store/store";
+import { useCartStore } from "@/store/store";
 
 export default function CartScreen() {
-    const items = store((state) => state.items)
+    const cart = useCartStore((state) => state.cart)
+    const decreaseQuantity = useCartStore((state) => state.decreaseQuantity)
+    const increaseQuantity = useCartStore((state) => state.increaseQuantity)
+    const removeFromCart = useCartStore((state) => state.removeFromCart)
 
   return (
     <SafeAreaView className="flex-1 ">
@@ -17,17 +20,22 @@ export default function CartScreen() {
         <HomeHeader />
       </View>
       {/* <Text>cart scren</Text> */}
-        {/* <EmptyCart /> */}
-      <View className="justify-start  h-full p-1">
+      {
+        cart.length > 0 ? (
+  <View className="justify-start  h-full p-1">
         {/* <View className="flex-1"> */}
 
           <FlatList
           
-          data={items}
+          data={cart}
           keyExtractor={(item)=>item.id}
           renderItem={({item})=>(
             // <View className="bg-slate-100 flex-row w-full p-1 h-28 border my-1">
-              <CartItem item = {item} /> 
+              <CartItem {...item} 
+              increaseQuantity={()=>increaseQuantity(item.id)} 
+              decreaseQuantity={()=>decreaseQuantity(item.id)}
+              removeFromCart={()=>removeFromCart(item.id)}
+              /> 
          
             // </View>
           )}
@@ -42,6 +50,11 @@ export default function CartScreen() {
         {/* </View> */}
         <TotalView itemPrice={5000} orderTotal={5025}/>
       </View>
+        ):
+        <EmptyCart/>
+      }
+      
+    
     </SafeAreaView>
   );
 }

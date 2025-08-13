@@ -5,15 +5,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import HomeHeader from "@/components/custom/HomeHeader";
 import ProductCart from "@/components/custom/ProductCart";
 import { products } from "@/data/products";
-import store from '../../store/store.js'
+import {useCartStore} from "@/store/store";
 export default function HomeScreen() {
-  const items = store((state) => state.items)
-  const addItemToCart = store((state) => state.addItemToCart)
-  console.log('items: ', items);
-  const handlecard=(item)=>{
-    console.log('item: ', item);
-      // addItemToCart(item)
-  }
+  // const cart = useCartStore((state) => state.cart)
+  const addToCart = useCartStore((state) => state.addToCart)
+
   return (
     <SafeAreaView className="flex-1 
     ">
@@ -30,7 +26,7 @@ export default function HomeScreen() {
               price={item.price}
               imageUrl={item.imageURL}
               // onPress={()=>handlecard(item)}
-              onPress={()=>addItemToCart(item)}
+              onPress={()=>addToCart(item)}
             />
           </View>
         )}

@@ -1,41 +1,48 @@
 import { View, Text, Image, Pressable, TouchableOpacity } from "react-native";
 import React from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { useCartStore } from "@/store/store";
+
 
 export default function CartItem({  title,
+  
   price,
   imageURL,
-  qty,
-  onDeletePress,
-  onIncreasePress,
-  onReducePress}) {
-  console.log('item: ', item);
+  quantity,
+  increaseQuantity,
+  decreaseQuantity,
+  removeFromCart
+  ,
+ }) {
+    
+ 
+
   return (
     <View className="bg-slate-100 flex-row w-full p-1 h-28 border my-1">
       {/* image box */}
-      <View className="flex-[2] h-full justify-start items-center bg-green-400">
+      <View className="flex-[2] h-full justify-start items-center">
         <Image
           className="w-[100%] h-full "
           source={{
-            uri:item.imageURL,
+            uri:imageURL
           }}
         />
         {/* <Text>111</Text> */}
       </View>
       {/* details box */}
       <View className="flex-[3.5] justify-around items-start">
-        <Text>{item.title}</Text>
-        <Text> {item.price} </Text>
+        <Text>{title}</Text>
+        <Text> {price} </Text>
         <View className="flex-row w-[70%] h-18 justify-around p-2 items-center bg-slate-200 border rounded-3xl ">
-          <TouchableOpacity>
+          <TouchableOpacity onPress={increaseQuantity}>
             <FontAwesome
               name="plus"
               size={10}
               className="  p-2 rounded-3xl border"
             />
           </TouchableOpacity>
-          <Text>1</Text>
-          <TouchableOpacity>
+          <Text> {quantity} </Text>
+          <TouchableOpacity onPress={decreaseQuantity}>
             <FontAwesome
               name="minus"
               size={10}
@@ -46,7 +53,7 @@ export default function CartItem({  title,
       </View>
       {/* delete box */}
       <View className="flex-[2] flex-row justify-around items-center ">
-        <TouchableOpacity>
+        <TouchableOpacity onPress={removeFromCart}>
 
             <FontAwesome
               name="remove"

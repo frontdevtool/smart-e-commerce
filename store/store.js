@@ -1,43 +1,52 @@
-// store/useItemStore.js
-import { products } from '@/data/products'
-import { create } from 'zustand'
+import { create } from 'zustand';
 
-const store = create((set) => ({
-  items: [],
+export const useCartStore = create((set,get) => ({
+  cart: [],
 
-//   addItemToCart: (item) =>
-//     set((state) => ({items: [...state.items, item],  })),
-      
-  
-
-addItemToCart: (item) =>
-  set((state) => {
-    // التحقق إذا كان العنصر موجود بالفعل
-    const exists = state.items.find((i) => i.id === item.id);
-    console.log('exists: ', exists);
-
-    // إذا موجود نرجّع نفس الحالة بدون تعديل
+  // إضافة منتج أو زيادة كميته إذا كان موجود
+  addToCart: (product) => set((state) => {
+    const exists = state.cart.find(item => item.id === product.id);
     if (exists) {
-      return state;
+      return {
+        cart: state.cart.map(item =>
+          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+        )
+      };
     }
-
-    // إذا مش موجود نضيفه
-    return {
-      items: [...state.items, item],
-    };
+    return { cart: [...state.cart, { ...product, quantity: 1 }] };
   }),
 
-  removeItem: (id) =>
-    set((state) => ({
-      items: state.items.filter((item) => item.id !== id),
-    })),
+  // حذف منتج بالكامل
+  removeFromCart: (id) => set((state) => ({
+    cart: state.cart.filter(item => item.id !== id)
+  })),
 
-  updateItem: (id, updatedData) =>
-    set((state) => ({
-      items: state.items.map((item) =>
-        item.id === id ? { ...item, ...updatedData } : item
-      ),
-    })),
-}))
+  // زيادة الكمية من داخل السلة
+  increaseQuantity: (id) => set((state) => ({
+    cart: state.cart.map(item =>
+      item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+    )
+  })),
 
-export default store
+  // إنقاص الكمية من داخل السلة (مع الحذف إذا وصلت للصفر)
+  decreaseQuantity: (id) => set((state) => ({
+    cart: state.cart
+      .map(item =>
+        item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+      )
+      .filter(item => item.quantity > 0) // حذف المنتج إذا أصبحت كميته صفر
+  })),
+
+  // تفريغ السلة
+  clearCart: () => set({ cart: [] }),
+
+  // 🆕 دالة لحساب المجموع الكلي
+  getTotalPrice: () => {
+    const { cart } = get();
+    return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+  }
+}));
+
+
+
+
