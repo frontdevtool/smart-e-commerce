@@ -53,7 +53,7 @@ export default function CartItem({  title,
       </View>
       {/* delete box */}
       <View className="flex-[2] flex-row justify-around items-center ">
-        <TouchableOpacity onPress={removeFromCart}>
+        <TouchableOpacity onPress={removeFromCart} >
 
             <FontAwesome
               name="remove"

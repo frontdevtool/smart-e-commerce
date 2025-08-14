@@ -12,14 +12,14 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../config/firebaseConfig";
 import FlashMessage, {showMessage} from "react-native-flash-message";
 const schema = z.object({
-  userName: z.string(),
-  // .min(6, "  اسم المستخدم يجب أن تكون 6 أحرف على الأقل"),
+  userName: z.string()
+  .min(6, "  اسم المستخدم يجب أن تكون 6 أحرف على الأقل"),
   email: z
-    .string(),
-    // .min(1, "البريد الإلكتروني مطلوب")
-    // .email("البريد الإلكتروني غير صالح"),
+    .string()
+    .min(1, "البريد الإلكتروني مطلوب")
+    .email("البريد الإلكتروني غير صالح"),
   password: z.string()
-  // .min(6, "كلمة المرور يجب أن تكون 6 أحرف على الأقل"),
+  .min(6, "كلمة المرور يجب أن تكون 6 أحرف على الأقل"),
 });
 
 export default function SignUpScreen({ navigation }) {

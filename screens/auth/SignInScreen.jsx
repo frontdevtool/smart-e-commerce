@@ -13,11 +13,11 @@ import {auth} from '../../config/firebaseConfig';
 import  FlashMessage, {showMessage} from 'react-native-flash-message'
 const schema = z.object({
   email: z
-    .string(),
-    // .min(1, "البريد الإلكتروني مطلوب")
-    // .email("البريد الإلكتروني غير صالح"),
-  password: z.string(),
-  // .min(6, "كلمة المرور يجب أن تكون 6 أحرف على الأقل"),
+    .string()
+    .min(1, "البريد الإلكتروني مطلوب")
+    .email("البريد الإلكتروني غير صالح"),
+  password: z.string()
+  .min(6, "كلمة المرور يجب أن تكون 6 أحرف على الأقل"),
 });
 
 export default function SignInScreen({ navigation }) {
@@ -114,7 +114,10 @@ export default function SignInScreen({ navigation }) {
               </View>
             )}
           />
-        <Button mode="contained" className="my-5 " onPress={handleSubmit(onSubmit)}>
+        <Button mode="contained" className="my-5 "
+                 onPress={() => navigation.navigate("MainBottomTab")}
+        //  onPress={handleSubmit(onSubmit)}
+         >
           login
         </Button>
         <Button
