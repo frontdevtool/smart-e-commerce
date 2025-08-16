@@ -1,3 +1,4 @@
+import Auth from "@/components/custom/Auth";
 import SignInScreen from "@/screens/auth/SignInScreen";
 import SignUpScreen from "@/screens/auth/SignUpScreen";
 
@@ -11,7 +12,8 @@ const AuthStack = () => {
       <Stack.Screen name="SignInScreen" component={SignInScreen} options={{
         // headerRight :()=><Pressable onPress={()=>alert('hi kazem')}>send</Pressable>
       }}/>
-      <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
+      {/* <Stack.Screen name="SignUpScreen" component={SignUpScreen} /> */}
+      <Stack.Screen name="Auth" component={Auth} />
     </Stack.Navigator>
   );
 };

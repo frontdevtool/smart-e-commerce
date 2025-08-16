@@ -123,7 +123,8 @@ export default function SignInScreen({ navigation }) {
         <Button
           mode="contained"
           className="my-1 "
-          onPress={() => navigation.navigate("SignUpScreen")}
+          // onPress={() => navigation.navigate("SignUpScreen")}
+          onPress={() => navigation.navigate("Auth")}
         >
           signup
         </Button>

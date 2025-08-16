@@ -15,5 +15,5 @@
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
     "nativewind-env.d.ts"
-, "constants/images.js", "data/products.js"  ]
+, "constants/images.js", "data/products.js", "lib/supabase.js"  ]
 }
